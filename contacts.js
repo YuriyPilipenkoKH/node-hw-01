@@ -85,7 +85,6 @@ const getContactByPhone = async (phone) => {
 }
 
 
-
 module.exports = {
     listContacts,
     getContactById,

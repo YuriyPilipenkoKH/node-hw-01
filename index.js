@@ -1,11 +1,7 @@
 const contacts = require('./contacts');
-const books  = require('./books') 
 // const yargs = require('yargs');
 // const {hideBin}= require('yargs/helpers');
 const { Command } = require('commander');
-
-
-
 const program = new Command();
 
 program
@@ -19,13 +15,13 @@ program.parse()
 const options = program.opts();
 
 
-const invokeAction =  async ({action, id, name, email, phone, title, author}) => {
+const invokeAction =  async ({action, id, name, email, phone}) => {
     switch(action) {
 
-    case 'readContacts' :
+    case 'list' :
         const allContacts = await contacts.listContacts()    
         return console.log(allContacts)
-    case 'getById' :   
+    case 'get' :   
         const contact = await contacts.getContactById(id)
         return console.log(contact) 
     case 'remove':    
@@ -50,7 +46,6 @@ const invokeAction =  async ({action, id, name, email, phone, title, author}) =>
         console.log('No such action')
     }
 } 
-
 
 invokeAction(options);
 
